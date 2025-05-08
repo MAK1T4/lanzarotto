@@ -116,226 +116,26 @@
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-                    <tr>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">00001</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">00/00/00</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Sertanejo</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">--------</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">BA</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Salvador</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">R$ 00,00</td>
+                    <tr *ngFor="let request of requests" (click)="navigateToRequestDetails(request.id)"
+                        class="cursor-pointer hover:bg-gray-50">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{request.id}}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{request.data}}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{request.tipo}}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{request.profissional}}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{request.uf}}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{request.cidade}}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{request.valor}}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm">
-                            <span class="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">Ativa</span>
+                            <span class="px-2 py-1 text-xs rounded-full" [ngClass]="{
+                                    'bg-green-100 text-green-800': request.status === 'Pendente',
+                                    'bg-yellow-100 text-yellow-800': request.status === 'Em Andamento',
+                                    'bg-gray-100 text-gray-800': request.status === 'Finalizado'
+                                }">
+                                {{request.status}}
+                            </span>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <button class="text-gray-500 hover:text-gray-700">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <circle cx="12" cy="12" r="1"></circle>
-                                    <circle cx="12" cy="5" r="1"></circle>
-                                    <circle cx="12" cy="19" r="1"></circle>
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">00002</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">00/00/00</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Sertanejo</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Nome do profissional</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">BA</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Salvador</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">R$ 00,00</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm">
-                            <span class="px-2 py-1 text-xs rounded-full bg-gray-100 text-gray-800">Encerrada</span>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <button class="text-gray-500 hover:text-gray-700">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <circle cx="12" cy="12" r="1"></circle>
-                                    <circle cx="12" cy="5" r="1"></circle>
-                                    <circle cx="12" cy="19" r="1"></circle>
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">00003</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">00/00/00</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Sertanejo</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">--------</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">BA</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Salvador</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">R$ 00,00</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm">
-                            <span class="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">Ativa</span>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <button class="text-gray-500 hover:text-gray-700">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <circle cx="12" cy="12" r="1"></circle>
-                                    <circle cx="12" cy="5" r="1"></circle>
-                                    <circle cx="12" cy="19" r="1"></circle>
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">00004</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">00/00/00</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Sertanejo</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Nome do profissional</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">BA</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Salvador</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">R$ 00,00</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm">
-                            <span class="px-2 py-1 text-xs rounded-full bg-gray-100 text-gray-800">Encerrada</span>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <button class="text-gray-500 hover:text-gray-700">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <circle cx="12" cy="12" r="1"></circle>
-                                    <circle cx="12" cy="5" r="1"></circle>
-                                    <circle cx="12" cy="19" r="1"></circle>
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">00005</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">00/00/00</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Sertanejo</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">--------</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">BA</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Salvador</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">R$ 00,00</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm">
-                            <span class="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">Ativa</span>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <button class="text-gray-500 hover:text-gray-700">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <circle cx="12" cy="12" r="1"></circle>
-                                    <circle cx="12" cy="5" r="1"></circle>
-                                    <circle cx="12" cy="19" r="1"></circle>
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">00006</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">00/00/00</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Sertanejo</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Nome do profissional</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">BA</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Salvador</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">R$ 00,00</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm">
-                            <span class="px-2 py-1 text-xs rounded-full bg-gray-100 text-gray-800">Encerrada</span>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <button class="text-gray-500 hover:text-gray-700">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <circle cx="12" cy="12" r="1"></circle>
-                                    <circle cx="12" cy="5" r="1"></circle>
-                                    <circle cx="12" cy="19" r="1"></circle>
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">00007</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">00/00/00</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Sertanejo</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">--------</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">BA</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Salvador</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">R$ 00,00</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm">
-                            <span class="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">Ativa</span>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <button class="text-gray-500 hover:text-gray-700">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <circle cx="12" cy="12" r="1"></circle>
-                                    <circle cx="12" cy="5" r="1"></circle>
-                                    <circle cx="12" cy="19" r="1"></circle>
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">00008</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">00/00/00</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Sertanejo</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Nome do profissional</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">BA</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Salvador</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">R$ 00,00</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm">
-                            <span class="px-2 py-1 text-xs rounded-full bg-gray-100 text-gray-800">Encerrada</span>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <button class="text-gray-500 hover:text-gray-700">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <circle cx="12" cy="12" r="1"></circle>
-                                    <circle cx="12" cy="5" r="1"></circle>
-                                    <circle cx="12" cy="19" r="1"></circle>
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">00009</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">00/00/00</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Sertanejo</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">--------</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">BA</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Salvador</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">R$ 00,00</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm">
-                            <span class="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">Ativa</span>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <button class="text-gray-500 hover:text-gray-700">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <circle cx="12" cy="12" r="1"></circle>
-                                    <circle cx="12" cy="5" r="1"></circle>
-                                    <circle cx="12" cy="19" r="1"></circle>
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">00010</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">00/00/00</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Sertanejo</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Nome do profissional</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">BA</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Salvador</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">R$ 00,00</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm">
-                            <span class="px-2 py-1 text-xs rounded-full bg-gray-100 text-gray-800">Encerrada</span>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <button class="text-gray-500 hover:text-gray-700">
+                            <button class="text-gray-500 hover:text-gray-700" (click)="$event.stopPropagation()">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round">

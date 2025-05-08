@@ -1,6 +1,6 @@
 <div class="flex flex-col min-h-screen">
-    <!-- Header -->
-    <header class="bg-black text-white py-3 px-4 flex justify-between items-center">
+    <!-- Header - mostrado apenas quando logado -->
+    <header *ngIf="isLoggedIn" class="bg-black text-white py-3 px-4 flex justify-between items-center">
         <div class="flex items-center gap-2">
             <div class="w-8 h-8 bg-gray-300 rounded-full"></div>
             <div>
@@ -25,8 +25,8 @@
     </header>
 
     <div class="flex flex-1">
-        <!-- Sidebar -->
-        <aside class="w-[125px] bg-gray-100 min-h-screen">
+        <!-- Sidebar - mostrado apenas quando logado -->
+        <aside *ngIf="isLoggedIn" class="w-[125px] bg-gray-100 min-h-screen">
             <nav>
                 <ul>
                     <li>
@@ -109,7 +109,7 @@
         </aside>
 
         <!-- Main Content -->
-        <main class="flex-1 bg-white">
+        <main class="flex-1 bg-white" [ngClass]="{'ml-0': !isLoggedIn}">
             <router-outlet></router-outlet>
         </main>
     </div>

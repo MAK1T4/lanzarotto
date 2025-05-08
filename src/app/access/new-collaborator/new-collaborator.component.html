@@ -1,0 +1,141 @@
+<div class="p-6">
+    <div class="mb-4">
+        <span class="text-xs text-gray-500">ACESSOS</span>
+        <h2 class="text-xl font-bold">Novo colaborador</h2>
+    </div>
+
+    <div class="bg-white rounded-lg shadow p-6">
+        <!-- Dados do colaborador -->
+        <div class="mb-8">
+            <h3 class="text-lg font-semibold mb-4">Dados do colaborador</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label for="nome" class="block text-sm font-medium text-gray-700 mb-1">Nome</label>
+                    <input type="text" id="nome" [(ngModel)]="collaborator.name" placeholder="Exemplo Preenchido"
+                        class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#B8860B] focus:border-transparent">
+                </div>
+                <div>
+                    <label for="cpf" class="block text-sm font-medium text-gray-700 mb-1">CPF</label>
+                    <input type="text" id="cpf" [(ngModel)]="collaborator.cpf" placeholder="000000000-00"
+                        class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#B8860B] focus:border-transparent">
+                </div>
+            </div>
+        </div>
+
+        <!-- Informações de acesso -->
+        <div class="mb-8">
+            <h3 class="text-lg font-semibold mb-4">Acesso</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">E-mail</label>
+                    <div class="relative">
+                        <div class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                            </svg>
+                        </div>
+                        <input type="email" id="email" [(ngModel)]="collaborator.email" placeholder="mail@email.com"
+                            class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#B8860B] focus:border-transparent">
+                    </div>
+                </div>
+                <div>
+                    <label for="senha" class="block text-sm font-medium text-gray-700 mb-1">Senha</label>
+                    <div class="relative">
+                        <div class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                        </div>
+                        <input type="password" id="senha" [(ngModel)]="collaborator.password" placeholder="**********"
+                            class="w-full pl-10 pr-10 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#B8860B] focus:border-transparent">
+                        <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Área da foto -->
+        <div class="flex justify-end mb-8">
+            <div class="text-center">
+                <div class="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                        class="text-gray-400">
+                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+                        <polyline points="10 17 15 12 10 7"></polyline>
+                        <line x1="15" x2="3" y1="12" y2="12"></line>
+                    </svg>
+                </div>
+                <p class="text-xs text-gray-500">Adicione uma foto</p>
+            </div>
+        </div>
+
+        <!-- Permissões -->
+        <div class="mb-8">
+            <h3 class="text-lg font-semibold mb-4">Permissão</h3>
+            <div class="mb-4">
+                <label for="access" class="block text-sm font-medium text-gray-700 mb-1">Select access</label>
+                <div class="relative">
+                    <select id="access" [(ngModel)]="collaborator.access"
+                        class="w-full p-2 border border-gray-300 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-[#B8860B] focus:border-transparent">
+                        <option value="Admin">Admin</option>
+                        <option value="Gerente">Gerente</option>
+                        <option value="Operador">Operador</option>
+                    </select>
+                    <div class="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m6 9 6 6 6-6"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid de módulos -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <div class="p-4 bg-gray-100 rounded-lg">
+                    <p class="text-sm font-medium">Dashboard</p>
+                </div>
+                <div class="p-4 bg-gray-100 rounded-lg">
+                    <p class="text-sm font-medium">Módulos</p>
+                </div>
+                <div class="p-4 bg-gray-100 rounded-lg">
+                    <p class="text-sm font-medium">Módulos</p>
+                </div>
+                <div class="p-4 bg-gray-100 rounded-lg">
+                    <p class="text-sm font-medium">Módulos</p>
+                </div>
+                <div class="p-4 bg-gray-100 rounded-lg">
+                    <p class="text-sm font-medium">Módulos</p>
+                </div>
+                <div class="p-4 bg-gray-100 rounded-lg">
+                    <p class="text-sm font-medium">Módulos</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botões de ação -->
+        <div class="flex justify-end space-x-4">
+            <button (click)="cancel()"
+                class="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">
+                Cancelar
+            </button>
+            <button (click)="save()" class="px-6 py-2 bg-[#B8860B] text-white rounded-lg hover:bg-[#9A7209]">
+                Salvar
+            </button>
+        </div>
+    </div>
+</div>
