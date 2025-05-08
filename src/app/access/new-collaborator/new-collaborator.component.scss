@@ -1,0 +1,17 @@
+:host {
+    display: block;
+}
+
+// Estilização para o ícone de câmera
+.camera-icon {
+    fill: none;
+    stroke: #999;
+    stroke-width: 1;
+}
+
+// Ajuste para o seletor
+select {
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+}

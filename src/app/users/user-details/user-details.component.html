@@ -1,0 +1,193 @@
+<div class="p-6">
+    <div class="mb-4 flex items-center">
+        <a routerLink="/users" class="flex items-center text-gray-600 hover:text-gray-900 mr-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 18l-6-6 6-6" />
+            </svg>
+        </a>
+        <span class="text-xs text-gray-500">USUÁRIOS</span>
+    </div>
+
+    <h2 class="text-xl font-bold mb-4">Detalhes do usuário</h2>
+
+    <!-- Cartão de Informações do Usuário -->
+    <div class="bg-white rounded-lg shadow p-6 mb-8">
+        <div class="flex items-start">
+            <!-- Avatar do usuário -->
+            <div class="w-16 h-16 bg-gray-200 rounded-full mr-6 flex-shrink-0"></div>
+
+            <!-- Informações do usuário em formato de grade -->
+            <div class="grid grid-cols-3 gap-x-12 gap-y-4 flex-grow">
+                <div>
+                    <p class="text-sm text-gray-500">Nome</p>
+                    <p class="font-medium">{{ user.nome }}</p>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-500">Email</p>
+                    <p class="font-medium">{{ user.email }}</p>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-500">Telefone</p>
+                    <p class="font-medium">{{ user.telefone }}</p>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-500">Estado</p>
+                    <p class="font-medium">{{ user.estado }}</p>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-500">Cidade</p>
+                    <p class="font-medium">{{ user.cidade }}</p>
+                </div>
+                <div class="flex items-center">
+                    <label class="inline-flex items-center cursor-pointer">
+                        <input type="checkbox" class="sr-only peer" checked>
+                        <div
+                            class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-[#4ade80]">
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Seção de Solicitações -->
+    <div class="mb-4">
+        <h3 class="text-lg font-bold mb-4">Solicitações</h3>
+
+        <div class="bg-white rounded-lg shadow overflow-hidden">
+            <!-- Cabeçalho da tabela -->
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-white">
+                        <tr>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <div class="flex items-center">
+                                    ID
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="ml-1">
+                                        <path d="m6 9 6 6 6-6"></path>
+                                    </svg>
+                                </div>
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <div class="flex items-center">
+                                    Data
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="ml-1">
+                                        <path d="m6 9 6 6 6-6"></path>
+                                    </svg>
+                                </div>
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <div class="flex items-center">
+                                    Tipo
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="ml-1">
+                                        <path d="m6 9 6 6 6-6"></path>
+                                    </svg>
+                                </div>
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <div class="flex items-center">
+                                    Profissional
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="ml-1">
+                                        <path d="m6 9 6 6 6-6"></path>
+                                    </svg>
+                                </div>
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <div class="flex items-center">
+                                    UF
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="ml-1">
+                                        <path d="m6 9 6 6 6-6"></path>
+                                    </svg>
+                                </div>
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <div class="flex items-center">
+                                    Cidade
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="ml-1">
+                                        <path d="m6 9 6 6 6-6"></path>
+                                    </svg>
+                                </div>
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <div class="flex items-center">
+                                    Valor
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="ml-1">
+                                        <path d="m6 9 6 6 6-6"></path>
+                                    </svg>
+                                </div>
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <div class="flex items-center">
+                                    Status
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="ml-1">
+                                        <path d="m6 9 6 6 6-6"></path>
+                                    </svg>
+                                </div>
+                            </th>
+                            <th scope="col" class="relative px-6 py-3">
+                                <span class="sr-only">Ações</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr *ngFor="let solicitacao of solicitacoes">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ solicitacao.id }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ solicitacao.data }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ solicitacao.tipo }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ solicitacao.profissional }}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ solicitacao.uf }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ solicitacao.cidade }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ solicitacao.valor }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span [ngClass]="{ 
+                                    'px-2 py-1 text-xs rounded-full font-medium': true,
+                                    'bg-green-100 text-green-800': solicitacao.status === 'Ativa',
+                                    'bg-gray-100 text-gray-800': solicitacao.status === 'Encerrada'
+                                }">
+                                    {{ solicitacao.status }}
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                <button class="text-gray-500 hover:text-gray-700">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="1"></circle>
+                                        <circle cx="12" cy="5" r="1"></circle>
+                                        <circle cx="12" cy="19" r="1"></circle>
+                                    </svg>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

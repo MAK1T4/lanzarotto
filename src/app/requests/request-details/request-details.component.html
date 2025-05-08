@@ -1,0 +1,294 @@
+<div class="p-6">
+    <!-- Navegação de retorno -->
+    <a (click)="goBack()" class="inline-flex items-center mb-4 text-gray-600 hover:text-gray-800 cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m15 18-6-6 6-6" />
+        </svg>
+        <span class="ml-1">Voltar para a lista de solicitações</span>
+    </a>
+
+    <!-- Título da página -->
+    <div class="mb-4">
+        <span class="text-xs text-gray-500">SOLICITAÇÕES</span>
+        <h2 class="text-xl font-bold">Detalhes da solicitação</h2>
+    </div>
+
+    <!-- Seções principais -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Coluna de informações principais -->
+        <div class="lg:col-span-2">
+            <!-- Card de dados da solicitação -->
+            <div class="bg-white rounded-lg shadow mb-6">
+                <div class="p-6">
+                    <h3 class="text-lg font-semibold mb-4">Solicitação #{{ request.numero }}</h3>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                        <div>
+                            <p class="text-sm text-gray-500 mb-1">Data</p>
+                            <p class="font-medium">{{ request.data }}</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 mb-1">Valor</p>
+                            <p class="font-medium">{{ request.valor }}</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 mb-1">Tipo</p>
+                            <p class="font-medium">{{ request.tipo }}</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 mb-1">Status</p>
+                            <p>
+                                <span class="px-2 py-1 text-xs rounded-full" [ngClass]="{
+                                        'bg-green-100 text-green-800': request.status === 'Pendente',
+                                        'bg-yellow-100 text-yellow-800': request.status === 'Em Andamento',
+                                        'bg-gray-100 text-gray-800': request.status === 'Finalizado'
+                                    }">
+                                    {{ request.status }}
+                                </span>
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 mb-1">Categoria</p>
+                            <p class="font-medium">{{ request.categoria }}</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 mb-1">Horário</p>
+                            <p class="font-medium">{{ request.horario }}</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 mb-1">Duração</p>
+                            <p class="font-medium">{{ request.duracao }}</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p class="text-sm text-gray-500 mb-1">Descrição</p>
+                        <p class="text-sm">{{ request.descricao }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Status de progresso -->
+            <div class="bg-white rounded-lg shadow mb-6">
+                <div class="p-6">
+                    <h3 class="text-lg font-semibold mb-4">Status</h3>
+
+                    <div class="flex items-center">
+                        <!-- Aguardando -->
+                        <div class="flex flex-col items-center">
+                            <div class="w-12 h-12 rounded-full bg-[#B8860B] flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M12 20v-6M9 9h6M7 20h10a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2Z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <span class="text-xs mt-2 text-center">Aguardando<br>Músico</span>
+                        </div>
+
+                        <!-- Linha de conexão -->
+                        <div class="flex-1 h-1 bg-gray-300 mx-2"></div>
+
+                        <!-- Em andamento -->
+                        <div class="flex flex-col items-center">
+                            <div class="w-12 h-12 rounded-full bg-[#B8860B] flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Z"></path>
+                                    <path d="M17 14v-4M8 10v4"></path>
+                                    <path d="M17 14v-4"></path>
+                                    <path d="M13 10l2 2.5-2 2.5"></path>
+                                    <path d="M11 15l-2-2.5 2-2.5"></path>
+                                </svg>
+                            </div>
+                            <span class="text-xs mt-2 text-center">Serviço em<br>andamento</span>
+                        </div>
+
+                        <!-- Linha de conexão -->
+                        <div class="flex-1 h-1 bg-gray-300 mx-2"></div>
+
+                        <!-- Concluído -->
+                        <div class="flex flex-col items-center">
+                            <div class="w-12 h-12 rounded-full bg-gray-300 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <path d="M22 4 12 14.01l-3-3"></path>
+                                </svg>
+                            </div>
+                            <span class="text-xs mt-2 text-center">Serviço<br>concluído</span>
+                        </div>
+
+                        <!-- Linha de conexão -->
+                        <div class="flex-1 h-1 bg-gray-300 mx-2"></div>
+
+                        <!-- Avaliado -->
+                        <div class="flex flex-col items-center">
+                            <div class="w-12 h-12 rounded-full bg-gray-300 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Z"></path>
+                                    <path d="M8 9h8M8 15h5"></path>
+                                </svg>
+                            </div>
+                            <span class="text-xs mt-2 text-center">Serviço<br>avaliado</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Abas com informações adicionais -->
+            <div class="bg-white rounded-lg shadow">
+                <div class="border-b border-gray-200">
+                    <nav class="flex -mb-px">
+                        <button (click)="setActiveTab('solicitante')" class="px-4 py-3 text-sm font-medium border-b-2"
+                            [ngClass]="activeTab === 'solicitante' ? 'border-[#B8860B] text-[#B8860B]' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'">
+                            Solicitante
+                        </button>
+                        <button (click)="setActiveTab('musico')" class="px-4 py-3 text-sm font-medium border-b-2"
+                            [ngClass]="activeTab === 'musico' ? 'border-[#B8860B] text-[#B8860B]' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'">
+                            Músico
+                        </button>
+                        <button (click)="setActiveTab('desistencia')" class="px-4 py-3 text-sm font-medium border-b-2"
+                            [ngClass]="activeTab === 'desistencia' ? 'border-[#B8860B] text-[#B8860B]' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'">
+                            Desistência
+                        </button>
+                        <button (click)="setActiveTab('avaliacao')" class="px-4 py-3 text-sm font-medium border-b-2"
+                            [ngClass]="activeTab === 'avaliacao' ? 'border-[#B8860B] text-[#B8860B]' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'">
+                            Avaliação
+                        </button>
+                    </nav>
+                </div>
+
+                <!-- Conteúdo das abas -->
+                <div class="p-6">
+                    <!-- Aba do Solicitante -->
+                    <div *ngIf="activeTab === 'solicitante'">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <p class="text-sm text-gray-500 mb-1">Nome</p>
+                                <p class="font-medium">{{ requester.nome }}</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500 mb-1">Email</p>
+                                <p class="font-medium">{{ requester.email }}</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500 mb-1">Telefone</p>
+                                <p class="font-medium">{{ requester.telefone }}</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500 mb-1">Estado</p>
+                                <p class="font-medium">{{ requester.estado }}</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500 mb-1">Cidade</p>
+                                <p class="font-medium">{{ requester.cidade }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Aba do Músico -->
+                    <div *ngIf="activeTab === 'musico'">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <p class="text-sm text-gray-500 mb-1">Nome</p>
+                                <p class="font-medium">{{ musician.nome }}</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500 mb-1">Email</p>
+                                <p class="font-medium">{{ musician.email }}</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500 mb-1">Telefone</p>
+                                <p class="font-medium">{{ musician.telefone }}</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500 mb-1">Estado</p>
+                                <p class="font-medium">{{ musician.estado }}</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500 mb-1">Cidade</p>
+                                <p class="font-medium">{{ musician.cidade }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Aba de Desistência -->
+                    <div *ngIf="activeTab === 'desistencia'">
+                        <p class="mb-4">Informe o motivo da desistência:</p>
+                        <textarea [(ngModel)]="withdrawalReason" rows="4"
+                            class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#B8860B] focus:border-transparent"
+                            placeholder="Descreva o motivo da desistência..."></textarea>
+                        <div class="mt-4">
+                            <button (click)="submitWithdrawal()"
+                                class="px-4 py-2 bg-[#B8860B] text-white rounded hover:bg-[#9A7209] transition duration-200">
+                                Confirmar Desistência
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Aba de Avaliação -->
+                    <div *ngIf="activeTab === 'avaliacao'">
+                        <p class="mb-4">Avalie o serviço realizado:</p>
+
+                        <!-- Estrelas de avaliação -->
+                        <div class="flex items-center mb-4">
+                            <div class="flex">
+                                <button *ngFor="let i of [1, 2, 3, 4, 5]" (click)="rating = i"
+                                    class="text-2xl focus:outline-none">
+                                    <span *ngIf="i <= rating" class="text-yellow-400">★</span>
+                                    <span *ngIf="i > rating" class="text-gray-300">★</span>
+                                </button>
+                            </div>
+                            <span class="ml-2 text-sm text-gray-600">{{ rating || 0 }} de 5 estrelas</span>
+                        </div>
+
+                        <!-- Comentário -->
+                        <textarea [(ngModel)]="comment" rows="4"
+                            class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#B8860B] focus:border-transparent"
+                            placeholder="Deixe um comentário sobre sua experiência..."></textarea>
+
+                        <div class="mt-4">
+                            <button (click)="submitEvaluation()"
+                                class="px-4 py-2 bg-[#B8860B] text-white rounded hover:bg-[#9A7209] transition duration-200">
+                                Enviar Avaliação
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Coluna lateral (para uso futuro) -->
+        <div class="lg:col-span-1">
+            <!-- Espaço reservado para widgets ou informações adicionais -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-lg font-semibold mb-4">Histórico de Atividades</h3>
+
+                <div class="space-y-4">
+                    <div class="border-l-2 border-[#B8860B] pl-4 py-1">
+                        <p class="text-sm font-medium">Solicitação criada</p>
+                        <p class="text-xs text-gray-500">{{ request.data }} às 10:25</p>
+                    </div>
+
+                    <div class="border-l-2 border-[#B8860B] pl-4 py-1">
+                        <p class="text-sm font-medium">Músico aceitou a solicitação</p>
+                        <p class="text-xs text-gray-500">{{ request.data }} às 14:30</p>
+                    </div>
+
+                    <div class="border-l-2 border-[#B8860B] pl-4 py-1">
+                        <p class="text-sm font-medium">Serviço iniciado</p>
+                        <p class="text-xs text-gray-500">{{ request.data }} às 20:00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

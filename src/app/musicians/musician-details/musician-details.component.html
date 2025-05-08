@@ -1,0 +1,230 @@
+<div class="p-6">
+    <div class="mb-4 flex items-center">
+        <a routerLink="/musicians" class="flex items-center text-gray-600 hover:text-gray-900 mr-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 18l-6-6 6-6" />
+            </svg>
+        </a>
+        <span class="text-xs text-gray-500">MÚSICOS</span>
+    </div>
+
+    <h2 class="text-xl font-bold mb-4">Detalhes do músico</h2>
+
+    <!-- Cartão de Informações do Músico -->
+    <div class="bg-white rounded-lg shadow p-6 mb-8">
+        <div class="flex items-start">
+            <!-- Avatar do músico -->
+            <div class="w-16 h-16 bg-gray-200 rounded-full mr-6 flex-shrink-0"></div>
+
+            <!-- Informações do músico em formato de grade -->
+            <div class="grid grid-cols-3 gap-x-12 gap-y-4 flex-grow">
+                <div>
+                    <p class="text-sm text-gray-500">Nome</p>
+                    <p class="font-medium">{{ musician.nome }}</p>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-500">Email</p>
+                    <p class="font-medium">{{ musician.email }}</p>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-500">Telefone</p>
+                    <p class="font-medium">{{ musician.telefone }}</p>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-500">Estado</p>
+                    <p class="font-medium">{{ musician.estado }}</p>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-500">Cidade</p>
+                    <p class="font-medium">{{ musician.cidade }}</p>
+                </div>
+                <div class="flex items-center">
+                    <label class="inline-flex items-center cursor-pointer">
+                        <input type="checkbox" class="sr-only peer" [(ngModel)]="musician.ativo">
+                        <div
+                            class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-[#4ade80]">
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navegação de abas -->
+    <div class="border-b border-gray-200 mb-6">
+        <nav class="-mb-px flex space-x-8">
+            <a (click)="setActiveTab('solicitacoes')"
+                [ngClass]="{'text-[#B8860B] border-[#B8860B]': activeTab === 'solicitacoes', 'text-gray-500 hover:text-gray-700 hover:border-gray-300': activeTab !== 'solicitacoes'}"
+                class="py-2 px-1 font-medium text-sm border-b-2 cursor-pointer">
+                Solicitações
+            </a>
+            <a (click)="setActiveTab('avaliacao')"
+                [ngClass]="{'text-[#B8860B] border-[#B8860B]': activeTab === 'avaliacao', 'text-gray-500 hover:text-gray-700 hover:border-gray-300': activeTab !== 'avaliacao'}"
+                class="py-2 px-1 font-medium text-sm border-b-2 cursor-pointer">
+                Avaliação
+            </a>
+        </nav>
+    </div>
+
+    <!-- Conteúdo das abas -->
+    <!-- Solicitações Tab -->
+    <div *ngIf="activeTab === 'solicitacoes'" class="mb-4">
+        <div class="bg-white rounded-lg shadow overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-white">
+                        <tr>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <div class="flex items-center">
+                                    ID
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="ml-1">
+                                        <path d="m6 9 6 6 6-6"></path>
+                                    </svg>
+                                </div>
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <div class="flex items-center">
+                                    Data
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="ml-1">
+                                        <path d="m6 9 6 6 6-6"></path>
+                                    </svg>
+                                </div>
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <div class="flex items-center">
+                                    Tipo
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="ml-1">
+                                        <path d="m6 9 6 6 6-6"></path>
+                                    </svg>
+                                </div>
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <div class="flex items-center">
+                                    Usuário
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="ml-1">
+                                        <path d="m6 9 6 6 6-6"></path>
+                                    </svg>
+                                </div>
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <div class="flex items-center">
+                                    UF
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="ml-1">
+                                        <path d="m6 9 6 6 6-6"></path>
+                                    </svg>
+                                </div>
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <div class="flex items-center">
+                                    Cidade
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="ml-1">
+                                        <path d="m6 9 6 6 6-6"></path>
+                                    </svg>
+                                </div>
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <div class="flex items-center">
+                                    Valor
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="ml-1">
+                                        <path d="m6 9 6 6 6-6"></path>
+                                    </svg>
+                                </div>
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <div class="flex items-center">
+                                    Status
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="ml-1">
+                                        <path d="m6 9 6 6 6-6"></path>
+                                    </svg>
+                                </div>
+                            </th>
+                            <th scope="col" class="relative px-6 py-3">
+                                <span class="sr-only">Ações</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr *ngFor="let solicitacao of solicitacoes">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ solicitacao.id }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ solicitacao.data }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ solicitacao.tipo }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ solicitacao.usuario }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ solicitacao.uf }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ solicitacao.cidade }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ solicitacao.valor }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span [ngClass]="{ 
+                                    'px-2 py-1 text-xs rounded-full font-medium': true,
+                                    'bg-green-100 text-green-800': solicitacao.status === 'Ativa',
+                                    'bg-gray-100 text-gray-800': solicitacao.status === 'Encerrada'
+                                }">
+                                    {{ solicitacao.status }}
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                <button class="text-gray-500 hover:text-gray-700">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="1"></circle>
+                                        <circle cx="12" cy="5" r="1"></circle>
+                                        <circle cx="12" cy="19" r="1"></circle>
+                                    </svg>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Avaliação Tab -->
+    <div *ngIf="activeTab === 'avaliacao'" class="mb-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div *ngFor="let avaliacao of avaliacoes" class="bg-white rounded-lg shadow p-6">
+                <div class="flex items-center mb-4">
+                    <div class="flex gap-1">
+                        <svg *ngFor="let i of [1, 2, 3, 4, 5]" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            viewBox="0 0 24 24"
+                            [ngClass]="{'text-yellow-500 fill-current': i <= avaliacao.estrelas, 'text-gray-300 fill-current': i > avaliacao.estrelas}">
+                            <path
+                                d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+                        </svg>
+                    </div>
+                    <span class="ml-auto text-xs text-gray-500">{{ avaliacao.data }}</span>
+                </div>
+                <p class="text-sm text-gray-600 mb-4">{{ avaliacao.texto }}</p>
+                <div class="flex items-center">
+                    <div class="w-8 h-8 bg-gray-200 rounded-full mr-2"></div>
+                    <span class="text-sm font-medium">{{ avaliacao.usuario }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
